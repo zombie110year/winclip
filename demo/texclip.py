@@ -44,7 +44,8 @@ def main():
         pdffile = workspace / "main.pdf"
         outimgfile = Path(f"texclip-{strftime('%H%M%S', localtime())}.png")
         magick_cmd = ["magick", "-density", "300",
-                      pdffile.as_posix(), "-quality", "100", outimgfile.absolute().as_posix()]
+                      pdffile.as_posix(), "-quality", "100",
+                      "-trim", outimgfile.absolute().as_posix()]
         magick_status = run(magick_cmd, shell=False, cwd=workspace,
                             stdout=PIPE, stderr=PIPE, timeout=5)
         magick_status.check_returncode()
