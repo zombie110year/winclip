@@ -4,12 +4,20 @@
 读写剪贴板
 """
 import win32.win32clipboard as wc
+from time import sleep
 
 
 class ClipBoard:
     @staticmethod
-    def listen():
-        pass
+    def listen(callback, interval=0.1):
+        clip_seq = wc.GetClipboardSequenceNumber()
+        while True:
+            clip_seq_new = wc.GetClipboardSequenceNumber()
+            if clip_seq != clip_seq_new:
+                clip_seq = clip_seq_new
+                callback()
+            else:
+                sleep(interval)
 
     @staticmethod
     def read(format=None) -> bytes:
