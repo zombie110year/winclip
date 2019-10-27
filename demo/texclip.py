@@ -19,9 +19,7 @@ from tempfile import TemporaryDirectory
 from time import localtime
 from time import strftime
 
-from win32.win32clipboard import CF_UNICODETEXT
-
-from winclip import ClipBoard
+from winclip import *
 
 
 def main():

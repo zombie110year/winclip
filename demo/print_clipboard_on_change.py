@@ -3,9 +3,11 @@
 while clipboard changed, show its content in console
 """
 
-from winclip.clipboard import ClipBoard
-from time import strftime
+
 from time import localtime
+from time import strftime
+
+from winclip import *
 
 
 def show_clipboard():
