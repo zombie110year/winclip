@@ -12,7 +12,9 @@ class ClipBoard:
         pass
 
     @staticmethod
-    def read(format=wc.CF_UNICODETEXT) -> bytes:
+    def read(format=None) -> bytes:
+        if format is None:
+            format = enum_clipformats()[0]
         try:
             wc.OpenClipboard()
             data = wc.GetClipboardData(format)
@@ -28,3 +30,20 @@ class ClipBoard:
             wc.SetClipboardData(format, data)
         finally:
             wc.CloseClipboard()
+
+
+def enum_clipformats() -> list:
+    """枚举当前剪贴板中的数据格式"""
+    formats = []
+    fm = 0
+    try:
+        wc.OpenClipboard()
+        while True:
+            fm = wc.EnumClipboardFormats(fm)
+            if fm != 0:
+                formats.append(fm)
+            else:
+                break
+    finally:
+        wc.CloseClipboard()
+    return formats
