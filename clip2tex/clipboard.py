@@ -13,8 +13,18 @@ class ClipBoard:
 
     @staticmethod
     def read(format=wc.CF_UNICODETEXT) -> bytes:
-        pass
+        try:
+            wc.OpenClipboard()
+            data = wc.GetClipboardData(format)
+        finally:
+            wc.CloseClipboard()
+        return data
 
     @staticmethod
     def write(data: bytes, format=wc.CF_UNICODETEXT):
-        pass
+        try:
+            wc.OpenClipboard()
+            wc.EmptyClipboard()
+            wc.SetClipboardData(format, data)
+        finally:
+            wc.CloseClipboard()
