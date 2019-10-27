@@ -1,4 +1,4 @@
-from clip2tex import __version__
+from wincliphost import __version__
 
 
 def test_version():
