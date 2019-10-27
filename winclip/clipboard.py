@@ -57,6 +57,7 @@ class ClipBoard:
             clip_seq_new = wc.GetClipboardSequenceNumber()
             if clip_seq != clip_seq_new:
                 clip_seq = clip_seq_new
+                # TODO: 非阻塞
                 callback()
             else:
                 sleep(interval)
