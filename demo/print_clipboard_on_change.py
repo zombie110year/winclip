@@ -3,7 +3,7 @@
 while clipboard changed, show its content in console
 """
 
-from wincliphost.clipboard import ClipBoard
+from winclip.clipboard import ClipBoard
 from time import strftime
 from time import localtime
 

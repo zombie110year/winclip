@@ -1,6 +1,6 @@
 import win32.win32clipboard as wc
 
-from wincliphost.clipboard import ClipBoard
+from winclip.clipboard import ClipBoard
 
 
 def test_rw_text():

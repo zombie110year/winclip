@@ -3,6 +3,9 @@ name = "clip2tex"
 version = "0.1.0"
 description = ""
 authors = ["zombie110year <zombie110year@outlook.com>"]
+packages = [
+    { include = "winclip" }
+]
 
 [tool.poetry.dependencies]
 python = "^3.7"

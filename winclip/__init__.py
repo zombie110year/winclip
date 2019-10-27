@@ -4,10 +4,9 @@
 方便制作 latex 公式图片。
 """
 
-from .clipboard import ClipBoard
-from .extern_call import ImageMagick
-from .extern_call import XeLaTeX
+from win32.win32clipboard import *
 
-__all__ = ("ClipBoard", "ImageMagick", "XeLaTeX")
+from .clipboard import ClipBoard
+
 __author__ = "zombie110year <zombie110year@outlook.com>"
 __version__ = '0.1.0'

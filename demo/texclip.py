@@ -21,7 +21,7 @@ from time import strftime
 
 from win32.win32clipboard import CF_UNICODETEXT
 
-from wincliphost import ClipBoard
+from winclip import ClipBoard
 
 
 def main():
