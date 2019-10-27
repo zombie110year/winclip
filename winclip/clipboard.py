@@ -69,7 +69,7 @@ class ClipBoard:
                            if ``None``, will use first format which ``EnumClipboardFormats`` return.
         """
         if format is None:
-            format = enum_clipformats()[0]
+            format = ClipBoard.enum_clipformats()[0]
         try:
             wc.OpenClipboard()
             data = wc.GetClipboardData(format)
@@ -91,19 +91,19 @@ class ClipBoard:
         finally:
             wc.CloseClipboard()
 
-
-def enum_clipformats() -> list:
-    """枚举当前剪贴板中的数据格式"""
-    formats = []
-    fm = 0
-    try:
-        wc.OpenClipboard()
-        while True:
-            fm = wc.EnumClipboardFormats(fm)
-            if fm != 0:
-                formats.append(fm)
-            else:
-                break
-    finally:
-        wc.CloseClipboard()
-    return formats
+    @staticmethod
+    def enum_clipformats() -> list:
+        """枚举当前剪贴板中的数据格式"""
+        formats = []
+        fm = 0
+        try:
+            wc.OpenClipboard()
+            while True:
+                fm = wc.EnumClipboardFormats(fm)
+                if fm != 0:
+                    formats.append(fm)
+                else:
+                    break
+        finally:
+            wc.CloseClipboard()
+        return formats
